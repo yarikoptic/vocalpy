@@ -91,3 +91,21 @@ omit = [
     "tests/scripts/",
     "noxfile.py",
 ]
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
+
+[tool.pixi.pypi-dependencies]
+vocalpy = { path = ".", editable = true }
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+dev = { features = ["dev", "doc", "test"], solve-group = "default" }
+doc = { features = ["doc"], solve-group = "default" }
+test = { features = ["test"], solve-group = "default" }
+
+[tool.pixi.tasks]
+generate-soundsig-test-data = "python ./tests/scripts/soundsig-test-data/generate_test_data.py"
+
+[tool.pixi.feature.generate-soundsig-test-data.pypi-dependencies]
+soundsig = {git = "https://github.com/NickleDave/soundsig", branch = "nicholdev"}
