@@ -35,3 +35,7 @@ tests/data-for-tests/generated/paths/
 tests/data-for-tests/generated/segment/
 tests/data-for-tests/generated/spectrogram/
 *.tar.gz
+
+# pixi environments
+.pixi
+*.egg-info
