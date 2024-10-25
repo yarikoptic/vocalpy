@@ -95,17 +95,22 @@ omit = [
 channels = ["conda-forge"]
 platforms = ["win-64", "linux-64", "osx-64", "osx-arm64"]
 
-[tool.pixi.pypi-dependencies]
-vocalpy = { path = ".", editable = true }
-
 [tool.pixi.environments]
 default = { solve-group = "default" }
 dev = { features = ["dev", "doc", "test"], solve-group = "default" }
 doc = { features = ["doc"], solve-group = "default" }
 test = { features = ["test"], solve-group = "default" }
+generate-soundsig-test-data = ["generate-soundsig-test-data"]
 
-[tool.pixi.tasks]
+[tool.pixi.pypi-dependencies]
+vocalpy = { path = ".", editable = true }
+
+[tool.pixi.feature.generate-soundsig-test-data]
+platforms = ["linux-64"]
+
+[tool.pixi.feature.generate-soundsig-test-data.tasks]
 generate-soundsig-test-data = "python ./tests/scripts/soundsig-test-data/generate_test_data.py"
 
 [tool.pixi.feature.generate-soundsig-test-data.pypi-dependencies]
-soundsig = {git = "https://github.com/NickleDave/soundsig", branch = "nicholdev"}
+soundsig = {git = "https://github.com/NickleDave/soundsig", rev = "9bb1011ff68b60f082fb3059c12eb0bf270085c2"}
+
