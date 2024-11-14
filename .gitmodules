@@ -1,0 +1,2 @@
+[submodule "tests/data-for-tests"]
+	datalad-url = git@github.com:NickleDave/vocalpy-test-data.git
